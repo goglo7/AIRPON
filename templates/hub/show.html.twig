@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hub{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hub.id }}</td>
+            </tr>
+            <tr>
+                <th>Gps</th>
+                <td>{{ hub.gps }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ hub.adresse }}</td>
+            </tr>
+            <tr>
+                <th>PositionHubOlt</th>
+                <td>{{ hub.positionHubOlt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_hub_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5 href="{{ path('app_hub_edit', {'id': hub.id}) }}">Modifier</a>
+
+    {{ include('hub/_delete_form.html.twig') }}
+{% endblock %}

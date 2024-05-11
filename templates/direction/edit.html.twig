@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une Direction{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_direction_index') }}">Retour</a>
+
+    {{ include('direction/_form.html.twig') }}
+
+    {{ include('direction/_delete_form.html.twig') }}
+{% endblock %}

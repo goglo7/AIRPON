@@ -1,0 +1,54 @@
+{% extends 'list.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path("app_user_new") }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Cin</th>
+                <th>Matricule</th>
+                <th>PostTravail</th>
+                <th>AdressePersonelle</th>
+                <th>AdresseProfessionelle</th>
+                <th>TelFixe</th>
+                <th>TelPortable</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.cin }}</td>
+                <td>{{ user.matricule }}</td>
+                <td>{{ user.postTravail }}</td>
+                <td>{{ user.adressePersonelle }}</td>
+                <td>{{ user.adresseProfessionelle }}</td>
+                <td>{{ user.telFixe }}</td>
+                <td>{{ user.telPortable }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_user_show', {'id': user.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

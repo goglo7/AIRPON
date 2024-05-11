@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un ModemOnt{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_modem_ont_index') }}">Retour</a>
+
+    {{ include('modem_ont/_form.html.twig') }}
+
+    {{ include('modem_ont/_delete_form.html.twig') }}
+{% endblock %}

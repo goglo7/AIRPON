@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CableInterBox{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cable_inter_box.id }}</td>
+            </tr>
+            <tr>
+                <th>DateInstallation</th>
+                <td>{{ cable_inter_box.dateInstallation ? cable_inter_box.dateInstallation|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cable_inter_box_index') }}">back to list</a>
+
+    <a href="{{ path('app_cable_inter_box_edit', {'id': cable_inter_box.id}) }}">edit</a>
+
+    {{ include('cable_inter_box/_delete_form.html.twig') }}
+{% endblock %}

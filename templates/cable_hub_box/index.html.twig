@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste CableHubBox{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path('app_cable_hub_box_new') }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Longueur</th>
+                <th>DateInstallation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cable_hub_box in cable_hub_boxes %}
+            <tr>
+                <td>{{ cable_hub_box.id }}</td>
+                <td>{{ cable_hub_box.longueur }}</td>
+                <td>{{ cable_hub_box.dateInstallation ? cable_hub_box.dateInstallation|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_cable_hub_box_show', {'id': cable_hub_box.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_cable_hub_box_edit', {'id': cable_hub_box.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

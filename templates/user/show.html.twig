@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Cin</th>
+                <td>{{ user.cin }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ user.matricule }}</td>
+            </tr>
+            <tr>
+                <th>PostTravail</th>
+                <td>{{ user.postTravail }}</td>
+            </tr>
+            <tr>
+                <th>AdressePersonelle</th>
+                <td>{{ user.adressePersonelle }}</td>
+            </tr>
+            <tr>
+                <th>AdresseProfessionelle</th>
+                <td>{{ user.adresseProfessionelle }}</td>
+            </tr>
+            <tr>
+                <th>TelFixe</th>
+                <td>{{ user.telFixe }}</td>
+            </tr>
+            <tr>
+                <th>TelPortable</th>
+                <td>{{ user.telPortable }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_user_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

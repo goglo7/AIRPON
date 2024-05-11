@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ client.id }}</td>
+            </tr>
+            <tr>
+                <th>Cin</th>
+                <td>{{ client.cin }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ client.nom }}</td>
+            </tr>
+            <tr>
+                <th>Pernom</th>
+                <td>{{ client.pernom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ client.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Gps</th>
+                <td>{{ client.gps }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_client_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_client_edit', {'id': client.id}) }}">Modifier</a>
+
+    {{ include('client/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'list.html.twig' %}
+
+{% block title %}Liste des hubs{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path("app_hub_new") }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Gps</th>
+                <th>Adresse</th>
+                <th>PositionHubOlt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hub in hubs %}
+            <tr>
+                <td>{{ hub.id }}</td>
+                <td>{{ hub.gps }}</td>
+                <td>{{ hub.adresse }}</td>
+                <td>{{ hub.positionHubOlt }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_hub_show', {'id': hub.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_hub_edit', {'id': hub.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

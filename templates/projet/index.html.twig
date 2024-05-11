@@ -1,0 +1,40 @@
+{% extends 'list.html.twig' %}
+
+{% block title %}Liste des projets{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path("app_projet_new") }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for projet in projets %}
+            <tr>
+                <td>{{ projet.id }}</td>
+                <td>{{ projet.nom }}</td>
+                <td>{{ projet.date ? projet.date|date('Y-m-d  ') : '' }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_projet_show', {'id': projet.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_projet_edit', {'id': projet.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

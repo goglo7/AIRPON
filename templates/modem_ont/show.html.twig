@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ModemOnt{% endblock %}
+
+{% block body %}
+
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ modem_ont.id }}</td>
+            </tr>
+            <tr>
+                <th>NumSerie</th>
+                <td>{{ modem_ont.numSerie }}</td>
+            </tr>
+            <tr>
+                <th>Caracteristiques</th>
+                <td>{{ modem_ont.caracteristiques }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_modem_ont_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_modem_ont_edit', {'id': modem_ont.id}) }}">Modifier</a>
+
+    {{ include('modem_ont/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ projet.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ projet.date ? projet.date|date('Y-m-d  ') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_projet_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_projet_edit', {'id': projet.id}) }}">Modifier</a>
+
+    {{ include('projet/_delete_form.html.twig') }}
+{% endblock %}

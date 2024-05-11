@@ -1,0 +1,40 @@
+{% extends 'list.html.twig' %}
+
+{% block title %}Liste des modem ont{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path("app_modem_ont_new") }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumSerie</th>
+                <th>Caracteristiques</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modem_ont in modem_onts %}
+            <tr>
+                <td>{{ modem_ont.id }}</td>
+                <td>{{ modem_ont.numSerie }}</td>
+                <td>{{ modem_ont.caracteristiques }}</td>
+                <td>
+                    <a  class="me-2 btn btn-primary" href="{{ path('app_modem_ont_show', {'id': modem_ont.id}) }}">Afficher</a>
+                    <a  class="me-2 btn btn-primary" href="{{ path('app_modem_ont_edit', {'id': modem_ont.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

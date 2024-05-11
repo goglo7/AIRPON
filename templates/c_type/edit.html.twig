@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un CType{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_c_type_index') }}">Retour</a>
+
+    {{ include('c_type/_form.html.twig') }}
+
+    {{ include('c_type/_delete_form.html.twig') }}
+{% endblock %}

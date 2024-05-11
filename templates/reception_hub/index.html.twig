@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des ReceptionHub{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path('app_reception_hub_new') }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reception_hub in reception_hubs %}
+            <tr>
+                <td>{{ reception_hub.id }}</td>
+                <td>{{ reception_hub.date ? reception_hub.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_reception_hub_show', {'id': reception_hub.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_reception_hub_edit', {'id': reception_hub.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

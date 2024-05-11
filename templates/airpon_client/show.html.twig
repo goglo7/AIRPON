@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AirponClient{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ airpon_client.id }}</td>
+            </tr>
+            <tr>
+                <th>Port</th>
+                <td>{{ airpon_client.port }}</td>
+            </tr>
+            <tr>
+                <th>Longueur</th>
+                <td>{{ airpon_client.longueur }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ airpon_client.date ? airpon_client.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_airpon_client_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_airpon_client_edit', {'id': airpon_client.id}) }}">Modifier</a>
+
+    {{ include('airpon_client/_delete_form.html.twig') }}
+{% endblock %}

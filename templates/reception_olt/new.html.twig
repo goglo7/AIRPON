@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un ReceptionOlt{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_reception_olt_index') }}">Retour</a>
+
+    {{ include('reception_olt/_form.html.twig') }}
+{% endblock %}

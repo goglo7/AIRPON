@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Box{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ box.id }}</td>
+            </tr>
+            <tr>
+                <th>Gps</th>
+                <td>{{ box.gps }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ box.adresse }}</td>
+            </tr>
+            <tr>
+                <th>DateInstallation</th>
+                <td>{{ box.dateInstallation ? box.dateInstallation|date('Y-m-d  ') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_box_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_box_edit', {'id': box.id}) }}">Modifier</a>
+
+    {{ include('box/_delete_form.html.twig') }}
+{% endblock %}

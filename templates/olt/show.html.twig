@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Olt{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ olt.id }}</td>
+            </tr>
+            <tr>
+                <th>Loc</th>
+                <td>{{ olt.loc }}</td>
+            </tr>
+            <tr>
+                <th>Gps</th>
+                <td>{{ olt.gps }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ olt.adresse }}</td>
+            </tr>
+            <tr>
+                <th>DateInstallation</th>
+                <td>{{ olt.dateInstallation ? olt.dateInstallation|date('Y-m-d  ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>VlanManagement</th>
+                <td>{{ olt.vlanManagement }}</td>
+            </tr>
+            <tr>
+                <th>PortMetro</th>
+                <td>{{ olt.portMetro }}</td>
+            </tr>
+            <tr>
+                <th>CapacitePortMetro</th>
+                <td>{{ olt.capacitePortMetro }}</td>
+            </tr>
+            <tr>
+                <th>AdresseManagement</th>
+                <td>{{ olt.adresseManagement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_olt_index') }}">Retour</a>
+
+    <a class="btn btn-secondary mb-5" href="{{ path('app_olt_edit', {'id': olt.id}) }}">Modifier</a>
+
+    {{ include('olt/_delete_form.html.twig') }}
+{% endblock %}

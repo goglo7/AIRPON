@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des CableInterBox{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path('app_cable_inter_box_new') }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateInstallation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cable_inter_box in cable_inter_boxes %}
+            <tr>
+                <td>{{ cable_inter_box.id }}</td>
+                <td>{{ cable_inter_box.dateInstallation ? cable_inter_box.dateInstallation|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary"style=""  href="{{ path('app_cable_inter_box_show', {'id': cable_inter_box.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_cable_inter_box_edit', {'id': cable_inter_box.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

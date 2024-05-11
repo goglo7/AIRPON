@@ -1,0 +1,38 @@
+{% extends 'list.html.twig' %}
+
+{% block title %}Liste des CTypes{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+            <div class="alert alert-{{ type }}">
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-end my-2">
+        <a href="{{ path("app_c_type_new") }}" class="btn btn-primary">Créer</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for c_type in c_types %}
+            <tr>
+                <td>{{ c_type.id }}</td>
+                <td>{{ c_type.name }}</td>
+                <td>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_c_type_show', {'id': c_type.id}) }}">Afficher</a>
+                    <a class="me-2 btn btn-primary" href="{{ path('app_c_type_edit', {'id': c_type.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un Projet{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_projet_index') }}">Retour</a>
+
+    {{ include('projet/_form.html.twig') }}
+
+
+    {{ include('projet/_delete_form.html.twig') }}
+{% endblock %}

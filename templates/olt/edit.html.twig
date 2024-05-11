@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un Olt{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_olt_index') }}">Retour</a>
+
+    {{ include('olt/_form.html.twig') }}
+
+
+    {{ include('olt/_delete_form.html.twig') }}
+{% endblock %}

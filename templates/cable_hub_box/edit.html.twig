@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CableHubBox{% endblock %}
+
+{% block body %}
+    <h1>Edit CableHubBox</h1>
+
+    {{ include('cable_hub_box/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_cable_hub_box_index') }}">back to list</a>
+
+    {{ include('cable_hub_box/_delete_form.html.twig') }}
+{% endblock %}

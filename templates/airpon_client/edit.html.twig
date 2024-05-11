@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un AirponClient{% endblock %}
+
+{% block body %}
+    <a class="btn btn-secondary mb-5" href="{{ path('app_airpon_client_index') }}">Retour</a>
+
+    {{ include('airpon_client/_form.html.twig') }}
+
+    {{ include('airpon_client/_delete_form.html.twig') }}
+{% endblock %}
